@@ -19,12 +19,6 @@ from sklearn.model_selection import cross_val_score
 from sklearn.metrics import precision_score, recall_score
 
 
-# Function to load email from file
-def load_email(is_spam, filename, path):
-    directory = 'spam' if is_spam else 'easy_ham'
-    with open(os.path.join(path, directory, filename), 'rb') as f:
-        return email.parser.BytesParser(policy=email.policy.default).parse(f)
-
 # Function to get email structure
 def get_email_structure(email):
     if isinstance(email, str):
