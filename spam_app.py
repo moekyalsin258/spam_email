@@ -18,22 +18,6 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import cross_val_score
 from sklearn.metrics import precision_score, recall_score
 
-# Function to fetch the spam data
-def fetch_spam_data(spam_url, ham_url, spam_path):
-    if not os.path.isdir(spam_path):
-        os.makedirs(spam_path)
-    path1 = os.path.join(spam_path, 'ham.tar.bz2')
-    path2 = os.path.join(spam_path, 'spam.tar.bz2')
-    
-    urllib.request.urlretrieve(ham_url, path1)
-    tar_file1 = tarfile.open(path1)
-    tar_file1.extractall(path=spam_path)
-    tar_file1.close()
-    
-    urllib.request.urlretrieve(spam_url, path2)
-    tar_file2 = tarfile.open(path2)
-    tar_file2.extractall(path=spam_path)
-    tar_file2.close()
 
 # Function to load email from file
 def load_email(is_spam, filename, path):
